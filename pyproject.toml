@@ -36,10 +36,10 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/your-org/dspy-coding-agent-lms"
-Documentation = "https://github.com/your-org/dspy-coding-agent-lms#readme"
-Repository = "https://github.com/your-org/dspy-coding-agent-lms"
-Issues = "https://github.com/your-org/dspy-coding-agent-lms/issues"
+Homepage = "https://github.com/saurabhdas/dspy-coding-agent-lms"
+Documentation = "https://github.com/saurabhdas/dspy-coding-agent-lms#readme"
+Repository = "https://github.com/saurabhdas/dspy-coding-agent-lms"
+Issues = "https://github.com/saurabhdas/dspy-coding-agent-lms/issues"
 
 [build-system]
 requires = ["hatchling"]
