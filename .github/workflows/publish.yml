@@ -33,4 +33,6 @@ jobs:
         run: uv build
 
       - name: Publish to PyPI
-        run: uv publish --trusted-publishing always
+        run: uv publish
+        env:
+          UV_PUBLISH_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
