@@ -68,7 +68,8 @@ class TestBuildCommand:
 
         assert "--json-schema" in cmd
         schema_idx = cmd.index("--json-schema")
-        assert '{"type": "object"' in cmd[schema_idx + 1] or '"type":"object"' in cmd[schema_idx + 1]
+        schema_str = cmd[schema_idx + 1]
+        assert '{"type": "object"' in schema_str or '"type":"object"' in schema_str
 
     def test_with_system_prompt(self) -> None:
         """Test command with system prompt."""
@@ -250,14 +251,12 @@ class TestAsyncExecute:
     @pytest.mark.asyncio
     async def test_aexecute_timeout(self, mocker: Any) -> None:
         """Test async execution timeout."""
-        import asyncio
-
         mock_process = MagicMock()
         mock_process.kill = MagicMock()
         mock_process.wait = MagicMock(return_value=None)
 
         async def mock_communicate(input: bytes | None = None) -> tuple[bytes, bytes]:
-            raise asyncio.TimeoutError()
+            raise TimeoutError()
 
         mock_process.communicate = mock_communicate
 
@@ -270,7 +269,7 @@ class TestAsyncExecute:
         mock_create = mocker.patch("asyncio.create_subprocess_exec")
         mock_create.return_value = mock_process
 
-        mocker.patch("asyncio.wait_for", side_effect=asyncio.TimeoutError())
+        mocker.patch("asyncio.wait_for", side_effect=TimeoutError())
 
         cli = ClaudeCodeCLI()
         with pytest.raises(ClaudeCodeTimeoutError):

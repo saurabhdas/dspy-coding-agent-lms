@@ -1,6 +1,6 @@
 [project]
 name = "dspy-coding-agent-lms"
-version = "0.1.2"
+version = "0.1.3"
 description = "DSPy LM integration for Claude Code CLI - route DSPy requests through local Claude Code agent"
 readme = "README.md"
 requires-python = ">=3.11"
